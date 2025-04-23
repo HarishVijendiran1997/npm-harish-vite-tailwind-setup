@@ -1,0 +1,29 @@
+{
+  "name": "harish-vite-tailwind-setup",
+  "version": "1.0.2",
+  "description": "A CLI tool to set up Tailwind in a Vite + React project",
+  "main": "index.js",
+  "bin": {
+    "harish-vite-tailwind-setup": "./index.js"
+  },
+  "keywords": [
+    "harish",
+    "vite",
+    "react",
+    "tailwind",
+    "coding"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "execa": "^5.1.0",
+    "fs-extra": "^10.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0"
+  },
+  "author": "Harish Vijendiran",
+  "license": "MIT"
+}
