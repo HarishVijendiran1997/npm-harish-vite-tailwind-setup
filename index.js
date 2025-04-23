@@ -5,9 +5,12 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const run = async () => {
-  const projectName = process.argv[2] || 'vite-react-app';
-  const projectPath = path.join(process.cwd(), projectName);
-  process.chdir(projectPath);
+  const projectPath = process.cwd();
+
+  if (!fs.existsSync(path.join(projectPath, 'vite.config.js'))) {
+    console.error('❌ Not a Vite project. Run this inside your Vite + React app folder.');
+    process.exit(1);
+  }
 
   // Step 1: Install Tailwind + Vite plugin
   console.log('Installing Tailwind CSS and Vite plugin...');
@@ -33,21 +36,18 @@ const run = async () => {
   const appCss = path.join(projectPath, 'src', 'App.css');
   const appJsx = path.join(projectPath, 'src', 'App.jsx');
 
-  // Remove App.css if exists
   if (fs.existsSync(appCss)) {
     await fs.remove(appCss);
   }
 
-  // Remove import of App.css in App.jsx
   let appJsxContent = await fs.readFile(appJsx, 'utf-8');
-  appJsxContent = appJsxContent.replace('import \'./App.css\';', '');
+  appJsxContent = appJsxContent.replace(/import\s+['"]\.\/App\.css['"];\s*/g, '');
 
-  // Replace the content of App.jsx with simple "Happy coding"
   appJsxContent = `
 function App() {
   return (
-    <div className="h-screen flex justify-center items-center">
-      <h1 className="text-4xl font-bold">Happy coding</h1>
+    <div className="h-screen flex justify-center items- bg-neutral-800 text-white">
+      <h1 className="text-4xl font-bold">Happy coding with <span className="text-5xl color-[#4DC0B5]">Tailwind 4</span></h1>
     </div>
   );
 }
@@ -55,7 +55,7 @@ function App() {
 export default App;
   `;
 
-  await fs.writeFile(appJsx, appJsxContent);
+  await fs.writeFile(appJsx, appJsxContent.trim());
 
   console.log('🎉 Setup complete! You can now run your Vite project.');
 };
