@@ -12,10 +12,8 @@ This tool saves you time by eliminating the need for manual configuration and st
 
 ---
 
-## **Installation**
+## 🚀 Installation & Usage
 
-To use this tool, you don't need to install it globally. Simply run the following command inside your **Vite + React** project directory:
-
-```bash
-npx harish-vite-tailwind-setup
-# npm-harish-vite-tailwind-setup
+> ⚠️ This package is a CLI tool!  
+> Do **not** use `npm install harish-vite-tailwind-setup` directly.  
+> Use it with `npx` after creating a Vite + React project.
