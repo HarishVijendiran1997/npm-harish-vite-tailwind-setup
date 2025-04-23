@@ -1,6 +1,6 @@
 {
   "name": "harish-vite-tailwind-setup",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A CLI tool to set up Tailwind in a Vite + React project",
   "main": "index.js",
   "bin": {
